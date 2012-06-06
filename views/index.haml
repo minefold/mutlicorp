@@ -11,9 +11,34 @@
     :css
       * { margin: 0; padding: 0; }
       html {
-        background: #549 url('/bg.png') center;
+        background-position: center;
         color: white;
-        font: 400 14px/20px "futura-pt", Helvetica, Arial, sans-serif;
+        font: 500 14px/20px "futura-pt", Helvetica, Arial, sans-serif;
+      }
+
+      html.purple {
+        background-color: #549;
+        background-image: url('/bg-purple.jpg');
+      }
+
+      html.blue {
+        background-color: #18d;
+        background-image: url('/bg-blue.jpg');
+      }
+
+      html.red {
+        background-color: #d31;
+        background-image: url('/bg-red.jpg');
+      }
+
+      html.green {
+        background-color: #2a4;
+        background-image: url('/bg-green.jpg');
+      }
+
+      html.yellow {
+        background-color: #db1;
+        background-image: url('/bg-yellow.jpg');
       }
 
       body, html {
@@ -58,7 +83,6 @@
         display: none;
       }
 
-
   %body
     #wrapper
       .vcard
@@ -75,3 +99,10 @@
           ,&nbsp;
           %span.postal-code> 94102
           %span.country-name United States
+
+  :javascript
+    var colors = ['purple', 'blue', 'red', 'green', 'yellow'],
+             n = Math.floor(5 * Math.random()),
+         color = colors[n];
+
+    document.documentElement.className += (' ' + color);
