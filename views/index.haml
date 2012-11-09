@@ -4,7 +4,7 @@
     %meta{charset: 'utf-8'}
     %title Mütli Corp.
 
-    %script{src: 'http://use.typekit.com/foi6gyc.js'}
+    %script{src: "//use.typekit.com/#{ENV['TYPEKIT']}.js"}
     :javascript
       try{Typekit.load();}catch(e){}
 
@@ -12,14 +12,13 @@
       * { margin: 0; padding: 0; }
       html {
         color: white;
-        font: 500 14px/20px "futura-pt", Helvetica, Arial, sans-serif;
+        font: 500 18px/24px "futura-pt-1", "futura-pt-2", Helvetica, Arial, sans-serif;
       }
 
-      html.purple { background-color: #549; }
-      html.blue { background-color: #18d; }
-      html.red { background-color: #d31; }
-      html.green { background-color: #2a4; }
-      html.yellow { background-color: #db1; }
+      html.blue { background-color: #06C; }
+      html.red { background-color: #F34; }
+      html.green { background-color: #5C2; }
+      html.yellow { background-color: #FD0; }
 
       body, html {
         height: 100%;
@@ -28,23 +27,29 @@
       #wrapper {
         position: relative;
         height: 100%;
-        width: 320px;
+        width: 480px;
         margin: 0 auto;
       }
 
       .vcard {
         position: absolute;
         top: 50%; left: 0; right: 0;
-        margin-top: -40px;
+        margin-top: -92px;
 
         text-align: center;
       }
 
       h1 {
         font-size: 48px;
-        line-height: 80px;
+        line-height: 72px;
         font-weight: 700;
         margin: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        color: rgba(255,255,255, 0.8);
+        margin-bottom: 48px;
       }
 
       a {
@@ -52,8 +57,9 @@
       }
 
       .adr {
-        color: rgba(0, 0, 0, 0.4);
+        color: rgba(0, 0, 0, 0.2);
         line-height: 20px;
+        font-weight: 600;
       }
 
       .email,
@@ -65,7 +71,14 @@
     #wrapper
       .vcard
         %h1.org
-          %a.url{href: '//mutlicorp.com'} Mütli Corp.
+          %a.url{href: '/'} Mütli Corp.
+
+        %h2
+          (We make
+          %a{href: 'https://minefold.com', title: 'Minefold'} Minefold
+          &amp;
+          %a{href: 'http://partycloud.com', title: 'Minefold'} The Party Cloud
+          for fun)
 
         %a.email{href: 'mailto:team@mutlicorp.com'} team@multicorp.com
         .adr
@@ -78,9 +91,10 @@
           %span.postal-code> 94102
           %span.country-name United States
 
+
   :javascript
-    var colors = ['purple', 'blue', 'red', 'green', 'yellow'],
-             n = Math.floor(5 * Math.random()),
+    var colors = ['blue', 'red', 'green', 'yellow'],
+             n = Math.floor(colors.length * Math.random()),
          color = colors[n];
 
     document.documentElement.className += (' ' + color);
