@@ -1,1 +1,1 @@
-web: bundle exec unicorn --port $PORT --config-file ./unicorn.rb
+web: bundle exec ruby ./app.rb
